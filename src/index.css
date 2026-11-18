@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "Inter", sans-serif;
+
+  --color-void: #05070a;
+  --color-charcoal: #0c1015;
+  --color-charcoal-2: #12171d;
+  --color-line: #1f2830;
+  --color-ink: #e9edf0;
+  --color-ink-dim: #7c8894;
+  --color-cyan: #5fe3e0;
+  --color-cyan-dim: #2b6e6e;
+  --color-red: #ff4d5e;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--color-void);
+  color: var(--color-ink);
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--color-cyan-dim);
+  color: white;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: var(--color-line); }
+
+@keyframes static-burst {
+  0% { opacity: 0.12; }
+  15% { opacity: 0; }
+  30% { opacity: 0.08; }
+  45% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes laser-pulse {
+  0%, 100% { opacity: 0.65; }
+  50% { opacity: 1; }
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes drift-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100vh); }
+}
+
+@keyframes scan-sweep {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+}
+
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.mono-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
